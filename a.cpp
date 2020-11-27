@@ -40,17 +40,7 @@ int n, m, k; //boiler plate declarations
 
 
 void solve(){
-	int i,m;
-	string str;
-	ss(str);
-	//deb(str);
-	ps(str);
-   	si(i); si(m);
-	deb(i);
-	pi(i);
-	pi(m);
-	deb(m);
-
+	cout<<"2nd commit";
 }
 
 int main(){
