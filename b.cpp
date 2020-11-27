@@ -41,6 +41,7 @@ int n, m, k; //boiler plate declarations
 
 void solve(){
 	int i, j, n , m;
+	cout<<"b.cpp alsochanged";
 }
 
 int main(){
