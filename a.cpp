@@ -6,12 +6,13 @@ using namespace std;
 #define ll long long
 #define si(x) scanf("%d",&x)
 #define sl(x) scanf("%lld",&x)
-#define ss(s) scanf("%s",&s)
-#define pi(x) printf("%d\n",x)
+#define ss(s) cin>>s
+//pi --> p
+#define p(x) cout<<x<<"\n"
 #define pl(x) printf("%lld\n",x)
-#define ps(s) printf("%s\n",&s)
-#define deb(x) cout<< #x << "=" << x << endl; //for debugging statements
-#define deb2(x, y) cout<< #x << "=" << x << #y << "=" << y;
+#define ps(s) cout<<s<<"\n"
+#define deb(x) cout<< #x << "=" << x << "\n" //for debugging statements
+#define deb2(x, y) cout<< #x << "=" << x << #y << "=" << y
 #define pb push_back
 #define mp make_pair
 #define F first
@@ -20,7 +21,7 @@ using namespace std;
 #define clr(x) memset(x, 0, sizeof(x))
 #define sortall(x) sort(all(x))
 #define tr(it, a) for(auto it=a.begin(); it!=a.end(); ++it)
-#define PI 3.1415926535897932384626
+#define PI 3.1415926535897932384626i
 typedef pair<int, int>	pii;
 typedef vector<int>		vi;
 typedef vector<pii>		vpii;
@@ -32,22 +33,40 @@ void dfs(int u, int par);
 //=======================
 const int MOD = 1'000'000'007;
 const int N = 2e6+13, M = N;
-//=======================
-vi g[N]; //global vector (mostly used as row for graph matrix)
+vi g[N]; //global vector (mostly used for graph matrix)
 int a[N]; //global array
 int n, m, k; //boiler plate declarations
 //=======================
-
+//using namespace std::chrono;
+//auto start = high_resolution_clock::now();
 
 void solve(){
-	cout<<"2nd commit";
+	int x, y;
+	si(x); si(y);
+	string s; ss(s);
+	int x2, x3, y3, y2;
+	x2=y2=x3=y3=0;
+	fo(i, (int)s.size()){
+		if(s[i]=='R')++x2;
+		if(s[i]=='L')--x3;
+		if(s[i]=='U')++y2;
+		if(s[i]=='D')--y3;
+		if((y<0 && x<0 && x3<=x && y3<=y) || (x>=0 && y>=0 && x2>=x && y2>=y) || (x<0 && y>=0 && x3<=x && y2>=y) || (x>=0 && y<0 && x2>=x && y3<=y)){
+			p("YES");
+			return;
+		}
+		if(a==b){
+		
+		}
+	
+	p("NO");
 }
+			
 
 int main(){
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
+	ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0);
 	int t=1;
-	cin>>t;
+    si(t);
 	while(t--){
 		solve();
 	}
@@ -55,30 +74,4 @@ int main(){
 	return 0;
 }
 
-int mpow(int base, int exp){
-	base %= MOD;
-	int res = 1;
-	while(exp > 0){
-		if(exp & 1) res=((ll)res*base) % MOD;
-		base=((ll)base*base) % MOD;
-		exp>>=1;
-	}
-	return res;
-}
 
-void ipgraph(int n, int m){
-	int i, u ,v;
-	while(m--){
-		cin>>u>>v;
-		--u;--v;
-		g[u].pb(v);
-		g[v].pb(u);
-	}
-}
-
-void dfs(int u, int par){
-	for(int v:g[u]){
-		if(v == par) continue;
-		dfs(v, u);
-	}
-}
